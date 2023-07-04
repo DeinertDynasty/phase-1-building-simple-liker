@@ -3,6 +3,29 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+// Get the heart and error modal elements
+const heart = document.querySelector(".heart");
+const errorModal = document.querySelector(".error-modal");
+
+// Initially hide the error modal
+errorModal.classList.add("hidden");
+
+// Add a click event listener to the heart
+heart.addEventListener("click", () => {
+  // Invoke the mimicServerCall function
+  mimicServerCall()
+    .then(() => {
+      // On success, toggle the heart and activated-heart classes
+      heart.classList.toggle("heart");
+      heart.classList.toggle("activated-heart");
+    })
+    .catch((error) => {
+      // On failure, display the error modal with the error message
+      errorModal.classList.remove("hidden");
+      errorModal.innerText = error;
+
+   
+});
 
 
 
